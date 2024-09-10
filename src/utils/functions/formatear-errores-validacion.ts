@@ -1,5 +1,5 @@
-import { ValidationError } from "class-validator";
-import { Constantes } from "../constantes";
+import { ValidationError } from 'class-validator';
+import { Constantes } from '../constantes';
 
 export function formatearErroresValidacion(
   errores: ValidationError[]
@@ -15,10 +15,9 @@ export function formatearErroresValidacion(
     if (error.children && error.children.length > 0) {
       mensajesValidaciones.push(...formatearErroresValidacion(error.children));
     } else {
-      const constraints = Object.values(error.constraints);
+      const constraints: any = Object.values(error.constraints);
       mensajesValidaciones.push(...constraints);
     }
   });
   return mensajesValidaciones;
 }
-
